@@ -1,5 +1,7 @@
 <?php
 
+use Laravel\Socialite\Facades\Socialite;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/send', 'HomeController@sendNotification');
+
+Route::get('facebook', function () {
+    return Socialite::driver('facebook')->redirect();
+});
+Route::get('/auth/facebook/callback', function () {
+    $user = Socialite::driver('facebook')->user();
+    dd($user);
+});

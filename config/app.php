@@ -1,5 +1,7 @@
 <?php
 
+use Laravel\Socialite\SocialiteServiceProvider;
+
 return [
 
     /*
@@ -165,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        SocialiteServiceProvider::class,
 
         /*
          * Application Service Providers...
