@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -22,6 +23,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/send', 'HomeController@sendNotification');
 
+Route::get('/users', function () {
+    return User::all();
+});
 Route::get('/{driver}', function ($driver) {
     if (in_array($driver, ['google', 'facebook'])) {
         return Socialite::driver($driver)->redirect();
