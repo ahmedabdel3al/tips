@@ -23,9 +23,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/send', 'HomeController@sendNotification');
 
 Route::get('/{driver}', function ($driver) {
-    return Socialite::driver($driver)->redirect();
+    if (in_array($driver, ['google', 'facebook'])) {
+        return Socialite::driver($driver)->redirect();
+    }
+    return 'this driver is not avaliable';
 });
 Route::get('/auth/{driver}/callback', function ($driver) {
-    $user = Socialite::driver($driver)->user();
-    dd($user);
+    if (in_array($driver, ['google', 'facebook'])) {
+        $user = Socialite::driver($driver)->user();
+        dd($user);
+    }
+    return 'this driver is not avaliable';
 });
