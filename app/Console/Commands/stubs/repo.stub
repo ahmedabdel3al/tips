@@ -1,0 +1,12 @@
+<?php
+
+use App\DummyModel;
+namespace DummyNamespace;
+
+class DummyClass 
+{
+    public $dummyModel ; 
+    public function __construct(DummyModel $dummyModel){
+        $this->dummyModel = $dummyModel;
+    }
+}
